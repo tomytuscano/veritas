@@ -1,0 +1,42 @@
+============================================================
+VERITAS — Training Report
+============================================================
+
+Best hyperparameters:
+  max_depth: 30
+  min_samples_leaf: 1
+  min_samples_split: 5
+  n_estimators: 200
+
+Classification Report (test set):
+              precision    recall  f1-score   support
+
+  bittorrent     0.8750    0.8449    0.8597    145426
+      normal     0.4183    0.2468    0.3105    125573
+       proxy     0.3860    0.7195    0.5024    130319
+         vpn     0.4146    0.2096    0.2785    113574
+
+    accuracy                         0.5272    514892
+   macro avg     0.5235    0.5052    0.4878    514892
+weighted avg     0.5383    0.5272    0.5071    514892
+
+------------------------------------------------------------
+Cross-Validation Scores (training set, 5-fold):
+  accuracy            : 0.5250 +/- 0.0005
+  f1_macro            : 0.4871 +/- 0.0015
+  precision_macro     : 0.5188 +/- 0.0011
+  recall_macro        : 0.5032 +/- 0.0005
+
+------------------------------------------------------------
+Confidence Threshold Analysis (>= 90%):
+  Coverage:                24.41%
+  Accuracy (confident):    97.92%
+  Accuracy (uncertain):    38.12%
+  Uncertain samples:       389188
+
+------------------------------------------------------------
+Dataset:
+  Test samples:   514892
+  Features:       95
+  Classes:        ['bittorrent', 'normal', 'proxy', 'vpn']
+============================================================
