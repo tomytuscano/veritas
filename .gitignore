@@ -1,4 +1,13 @@
 CLAUDE.md
-=4.0.0
 nul
-__pycache__
+__pycache__/
+*.pyc
+
+# Large data files — not suitable for GitHub
+zeek_logs/
+models/*.pkl
+
+# Keep reports and plots
+!models/training_report.txt
+!models/confusion_matrix.png
+!models/feature_importance.png
