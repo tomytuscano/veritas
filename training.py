@@ -67,6 +67,7 @@ def train_model(
             is_unbalance=True,
             n_jobs=-1,
             verbose=-1,
+            device="cuda",
         ),
         param_grid=LGBM_PARAM_GRID,
         scoring="f1_macro",
@@ -86,6 +87,7 @@ def train_model(
         is_unbalance=True,
         n_jobs=-1,
         verbose=-1,
+        device="cuda",
     )
     best_model.fit(X_train, y_train)
 

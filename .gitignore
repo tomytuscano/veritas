@@ -2,11 +2,11 @@
 nul
 __pycache__/
 *.pyc
-veritas_env
+vertitas_env/
 
 # Large data files — not suitable for GitHub
 zeek_logs/
-
+models/*.pkl
 
 # Keep reports and plots
 !models/training_report.txt
