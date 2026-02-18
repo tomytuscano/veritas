@@ -1,11 +1,13 @@
 """Veritas classifier — inference on new Zeek logs."""
 
+import argparse
 import logging
+from pathlib import Path
 
 import joblib
 import numpy as np
 
-from config import CONFIDENCE_THRESHOLD, OUTPUT_DIR
+from config import CONFIDENCE_THRESHOLD, LOGS_DIR, OUTPUT_DIR
 from data_loader import load_all_classes
 from feature_engineering import engineer_features
 from utils import setup_logging
@@ -42,13 +44,29 @@ def predict(model, X, class_labels, threshold=CONFIDENCE_THRESHOLD):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Run Veritas inference on combined Zeek logs.")
+    parser.add_argument(
+        "--logs-dir",
+        default=str(LOGS_DIR),
+        help=f"Directory containing combined Zeek CSVs (default: {LOGS_DIR})",
+    )
+    parser.add_argument(
+        "--model-dir",
+        default=str(OUTPUT_DIR),
+        help=f"Directory containing trained model artifacts (default: {OUTPUT_DIR})",
+    )
+    args = parser.parse_args()
+
     setup_logging()
 
-    logger.info("Loading model artifacts from %s", OUTPUT_DIR)
-    model, feature_names, class_labels = load_model()
+    logs_dir = Path(args.logs_dir)
+    model_dir = Path(args.model_dir)
 
-    logger.info("Loading and engineering features from Zeek logs …")
-    df = load_all_classes()
+    logger.info("Loading model artifacts from %s", model_dir)
+    model, feature_names, class_labels = load_model(model_dir)
+
+    logger.info("Loading and engineering features from %s …", logs_dir)
+    df = load_all_classes(logs_dir)
     X, _ = engineer_features(df)
 
     logger.info("Running inference on %d flows …", len(X))

@@ -6,3 +6,4 @@ vertitas_env/
 
 # Large data files — not suitable for GitHub
 zeek_logs/
+logs/

@@ -3,37 +3,37 @@ VERITAS — Training Report
 ============================================================
 
 Best hyperparameters:
-  learning_rate: 0.05
-  max_depth: 10
+  learning_rate: 0.1
+  max_depth: 20
   min_child_samples: 20
   n_estimators: 500
-  num_leaves: 31
+  num_leaves: 63
 
 Classification Report (test set):
               precision    recall  f1-score   support
 
-  bittorrent     0.9999    0.9999    0.9999    145426
-      normal     0.9999    0.9999    0.9999    125573
-       proxy     0.9952    0.9986    0.9969    130319
-         vpn     0.9984    0.9944    0.9964    113574
+  bittorrent     0.9871    0.9457    0.9659    145426
+      normal     0.6990    0.3416    0.4589    125573
+       proxy     0.4338    0.9175    0.5891    130319
+         vpn     0.7900    0.2682    0.4005    113574
 
-    accuracy                         0.9984    514892
-   macro avg     0.9983    0.9982    0.9983    514892
-weighted avg     0.9984    0.9984    0.9984    514892
+    accuracy                         0.6418    514892
+   macro avg     0.7274    0.6183    0.6036    514892
+weighted avg     0.7333    0.6418    0.6222    514892
 
 ------------------------------------------------------------
 Cross-Validation Scores (training set, 5-fold):
-  accuracy            : 0.9983 +/- 0.0000
-  f1_macro            : 0.9982 +/- 0.0000
-  precision_macro     : 0.9982 +/- 0.0001
-  recall_macro        : 0.9982 +/- 0.0001
+  accuracy            : 0.6426 +/- 0.0006
+  f1_macro            : 0.6042 +/- 0.0006
+  precision_macro     : 0.7293 +/- 0.0038
+  recall_macro        : 0.6190 +/- 0.0006
 
 ------------------------------------------------------------
 Confidence Threshold Analysis (>= 90%):
-  Coverage:                99.68%
-  Accuracy (confident):    100.00%
-  Accuracy (uncertain):    50.87%
-  Uncertain samples:       1671
+  Coverage:                41.59%
+  Accuracy (confident):    99.93%
+  Accuracy (uncertain):    38.73%
+  Uncertain samples:       300768
 
 ------------------------------------------------------------
 Dataset:

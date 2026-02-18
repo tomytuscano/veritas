@@ -6,6 +6,7 @@ from pathlib import Path
 # ── Paths ──────────────────────────────────────────────────────────────────────
 PROJECT_DIR = Path(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = PROJECT_DIR / "zeek_logs"
+LOGS_DIR = PROJECT_DIR / "logs"
 OUTPUT_DIR = PROJECT_DIR / "models"
 
 # ── Traffic classes ────────────────────────────────────────────────────────────
@@ -84,6 +85,28 @@ CONCURRENCY_COLS = [
     "src_flow_count", "unique_dest_count",
     "unique_dest_port_count", "dest_port_entropy",
 ]
+
+# ── Known protocol ports (used in feature engineering) ────────────────────────
+VPN_PORTS = {
+    1194,   # OpenVPN (UDP/TCP)
+    51820,  # WireGuard
+    500,    # IKEv2/IPsec
+    4500,   # IPsec NAT traversal
+    1701,   # L2TP
+    1723,   # PPTP
+    1194,   # OpenVPN alternate
+    4096,   # OpenVPN alternate
+    8194,   # OpenVPN alternate
+}
+
+PROXY_PORTS = {
+    3128,   # Squid HTTP proxy
+    8080,   # HTTP proxy / alt web
+    8888,   # HTTP proxy alternate
+    1080,   # SOCKS4/SOCKS5
+    9050,   # Tor SOCKS
+    9150,   # Tor Browser
+}
 
 # ── LightGBM GridSearchCV parameter grid ──────────────────────────────────────
 LGBM_PARAM_GRID = {
